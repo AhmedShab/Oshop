@@ -7,9 +7,22 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { NavbarComponent } from './navbar/navbar.component';
+
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ShoppingCartComponent],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  declarations: [AppComponent, HomeComponent, ShoppingCartComponent, NavbarComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
