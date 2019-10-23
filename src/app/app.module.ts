@@ -21,7 +21,19 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ShoppingCartComponent, NavbarComponent, ProductsComponent, CheckoutComponent, OrderSuccessComponent, MyOrdersComponent, AdminProductsComponent, AdminOrdersComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    ShoppingCartComponent,
+    NavbarComponent,
+    ProductsComponent,
+    CheckoutComponent,
+    OrderSuccessComponent,
+    MyOrdersComponent,
+    AdminProductsComponent,
+    AdminOrdersComponent,
+    LoginComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
