@@ -33,4 +33,8 @@ export class ProductService {
       .object(`/products/${productId}`)
       .valueChanges() as Observable<AppProduct>;
   }
+
+  update(productId, product) {
+    return this.db.object(`/products/${productId}`).update(product);
+  }
 }
