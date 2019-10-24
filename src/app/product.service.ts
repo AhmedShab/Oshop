@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
-import { AppProduct } from './models/app-product';
+import { Product } from './models/roduct';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -28,10 +28,10 @@ export class ProductService {
       );
   }
 
-  get(productId): Observable<AppProduct> {
+  get(productId): Observable<Product> {
     return this.db
       .object(`/products/${productId}`)
-      .valueChanges() as Observable<AppProduct>;
+      .valueChanges() as Observable<Product>;
   }
 
   update(productId, product) {

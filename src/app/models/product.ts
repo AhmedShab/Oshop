@@ -1,4 +1,4 @@
-export interface AppProduct {
+export interface Product {
   category?: string;
   imageUrl?: string;
   title?: string;

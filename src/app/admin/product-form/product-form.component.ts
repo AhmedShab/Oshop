@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { AppProduct } from '../../models/app-product';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-product-form',
@@ -13,7 +13,7 @@ import { AppProduct } from '../../models/app-product';
 })
 export class ProductFormComponent implements OnInit {
   categories$: Observable<any[]>;
-  product: AppProduct = {};
+  product: Product = {};
   id;
 
   constructor(
