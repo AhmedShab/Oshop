@@ -24,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 import { CustomFormsModule } from 'ng2-validation';
+import { DataTableModule } from 'angular-6-datatable';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CustomFormsModule } from 'ng2-validation';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     FormsModule,
-    CustomFormsModule
+    CustomFormsModule,
+    DataTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
