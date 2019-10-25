@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
-import { Product } from './models/roduct';
+import { Product } from './models/product';
 import { Observable } from 'rxjs';
+import { snapshotChanges } from './utils/firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +16,7 @@ export class ProductService {
   }
 
   getAll() {
-    return this.db
-      .list('/products')
-      .snapshotChanges()
-      .pipe(
-        map(changes => {
-          return changes.map(c => ({
-            key: c.key,
-            ...c.payload.val()
-          }));
-        })
-      );
+    return snapshotChanges(this.db.list('/products'));
   }
 
   get(productId): Observable<Product> {

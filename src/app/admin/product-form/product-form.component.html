@@ -54,7 +54,7 @@
           <option value=""></option>
           <option
             *ngFor="let category of categories$ | async"
-            [value]="category.name"
+            [value]="category.key"
             >{{ category.name }}</option
           >
         </select>
