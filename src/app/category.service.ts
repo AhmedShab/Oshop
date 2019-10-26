@@ -8,7 +8,7 @@ import { snapshotChanges } from './utils/firebase';
 export class CategoryService {
   constructor(private db: AngularFireDatabase) {}
 
-  getCategories() {
+  getAll() {
     let list = this.db.list('/categories', ref => ref.orderByChild('name'));
     return snapshotChanges(list);
   }

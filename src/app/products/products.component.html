@@ -1,16 +1,26 @@
 <div class="row">
-  <div class="col-md-3">
-    <ul class="list-group">
-      <li [class.active]="isActive" class="list-group-item">All Categories</li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Morbi leo risus</li>
-      <li class="list-group-item">Porta ac consectetur ac</li>
-      <li class="list-group-item">Vestibulum at eros</li>
-    </ul>
+  <div class="col-3">
+    <div class="list-group">
+      <a
+        class="list-group-item list-group-item-action"
+        routerLink="/"
+        [class.active]="!category"
+        >All Categories</a
+      >
+      <a
+        *ngFor="let cat of categories$ | async"
+        [class.active]="category === cat.key"
+        class="list-group-item list-group-item-action"
+        routerLink="/"
+        [queryParams]="{ category: cat.key }"
+      >
+        {{ cat.name }}
+      </a>
+    </div>
   </div>
-  <div class="col-md-7">
+  <div class="col">
     <div class="row">
-      <div *ngFor="let product of products$ | async" class="col-md-6">
+      <div *ngFor="let product of filteredProduct" class="col-md-6">
         <div class="card" style="width: 15rem;">
           <img [src]="product.imageUrl" class="card-img-top" />
           <div class="card-body">
