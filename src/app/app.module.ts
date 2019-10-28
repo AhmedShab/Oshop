@@ -25,6 +25,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 
 import { CustomFormsModule } from 'ng2-validation';
 import { DataTableModule } from 'angular-6-datatable';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { DataTableModule } from 'angular-6-datatable';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
