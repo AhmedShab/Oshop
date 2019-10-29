@@ -15,8 +15,13 @@ export class ShoppingCartService {
     let cartId = await this.getOrCreateCartId();
     return this.db
       .object(`/shopping-carts/${cartId}`)
-      .valueChanges()
-      .pipe(map((x: ShoppingCart) => new ShoppingCart(x.items)));
+      .snapshotChanges()
+      .pipe(
+        map(changes => {
+          const newCart: any = changes.payload.val();
+          return newCart ? new ShoppingCart(newCart.items) : null;
+        })
+      );
   }
 
   addToCart(product: Product) {
