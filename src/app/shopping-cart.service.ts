@@ -30,20 +30,22 @@ export class ShoppingCartService {
     return result.key;
   }
 
+  private getItem(cartId: string, productId: string) {
+    return this.db.object(`/shopping-carts/${cartId}/items/${productId}`);
+  }
+
   async addToCart(product: Product) {
     let cartId = await this.getOrCreateCartId();
-    let item$ = this.db.object(
-      `/shopping-carts/${cartId}/items/${product.key}`
-    );
+    let item$ = this.getItem(cartId, product.key);
     item$
       .snapshotChanges()
       .pipe(take(1))
       .subscribe((item: any) => {
-        if (item.payload.val()) {
-          item$.update({ quantity: item.payload.val().quantity + 1 });
-        } else {
-          item$.set({ product: product, quantity: 1 });
-        }
+        let value = item.payload.val();
+        item$.update({
+          product: product,
+          quantity: (value ? value.quantity : 0) + 1
+        });
       });
   }
 }
