@@ -10,10 +10,18 @@ import { ShoppingCartService } from '../shopping-cart.service';
 export class ProductCardComponent {
   @Input('product') product;
   @Input('show-actions') showActions = true;
+  @Input('shopping-cart') shoppingCart;
 
   constructor(private cartService: ShoppingCartService) {}
 
   async addToCart(product: Product) {
     this.cartService.addToCart(product);
+  }
+
+  getQuantity() {
+    if (!this.shoppingCart) return 0;
+
+    let item = this.shoppingCart.items[this.product.key];
+    return item ? item.quantity : 0;
   }
 }
