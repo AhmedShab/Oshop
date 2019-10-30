@@ -18,8 +18,6 @@ export class ProductQuantityComponent {
 
   async ngOnInit() {
     this.cart$ = await this.cartService.getCart();
-
-    // this.cart$.subscribe(x => console.log(x.itemsMap));
   }
 
   addToCart(product: Product) {

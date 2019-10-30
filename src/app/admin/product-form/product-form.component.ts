@@ -13,7 +13,7 @@ import { Product } from '../../models/product';
 })
 export class ProductFormComponent implements OnInit {
   categories$: Observable<any[]>;
-  product: Product = {};
+  product = {} as Product;
   id;
 
   constructor(

@@ -1,10 +1,11 @@
 <div class="row">
   <div class="col-6">
     <h1>Shipping</h1>
-    <form #f="ngForm">
+    <form>
       <div class="form-group">
         <label for="name">Name</label>
         <input
+          [(ngModel)]="shipping.name"
           #name="ngModel"
           ngModel
           name="name"
@@ -18,40 +19,49 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="line1">Address</label>
+        <label for="addressLine1">Address</label>
         <input
-          #line1="ngModel"
+          [(ngModel)]="shipping.addressLine1"
+          #addressLine1="ngModel"
           ngModel
-          name="line1"
+          name="addressLine1"
           class="form-control"
           type="text"
-          id="line1"
+          id="addressLine1"
           placeholder="Line 1"
           required
         />
-        <div class="alert alert-danger" *ngIf="line1.touched && line1.invalid">
+        <div
+          class="alert alert-danger"
+          *ngIf="addressLine1.touched && addressLine1.invalid"
+        >
           Line 1 is required
         </div>
       </div>
       <div class="form-group">
-        <label for="line2"></label>
+        <label for="addressLine2"></label>
         <input
-          #line2="ngModel"
+          [(ngModel)]="shipping.addressLine2"
+          #addressLine2="ngModel"
           ngModel
-          name="line2"
+          name="addressLine2"
           class="form-control"
           type="text"
-          id="line2"
+          id="addressLine2"
           placeholder="Line 2"
           required
         />
-        <div class="alert alert-danger" *ngIf="line2.touched && line2.invalid">
+        <div
+          class="alert alert-danger"
+          *ngIf="addressLine2.touched && addressLine2.invalid"
+        >
           Line 2 is required
         </div>
       </div>
       <div class="form-group">
         <label for="city">City</label>
         <input
+          [(ngModel)]="shipping.city"
           #city="ngModel"
           ngModel
           name="city"
@@ -64,7 +74,9 @@
           City is required
         </div>
       </div>
-      <button class="btn btn-primary">Place Order</button>
+      <button (click)="placeOrder()" class="btn btn-primary">
+        Place Order
+      </button>
     </form>
   </div>
   <div class="col-6">
