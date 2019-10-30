@@ -6,36 +6,19 @@
       {{ product.price | currency: 'NZD':'symbol' }}
     </p>
   </div>
-  <div *ngIf="showActions" class="card-footer">
-    <ng-container *ngIf="cart$ | async as cart">
-      <button
-        *ngIf="cart.totalItemCount === 0; else updateQuantity"
-        (click)="addToCart(product)"
-        class="btn btn-secondary btn-block"
-      >
-        Add to cart {{ cart.totalItemCount }}
-      </button>
-      <ng-template #updateQuantity>
-        <div class="row no-gutters">
-          <div class="col-2">
-            <button
-              (click)="removeFromCart(product)"
-              class="btn btn-secondary btn-block"
-            >
-              -
-            </button>
-          </div>
-          <div class="col text-center">{{ cart.totalItemCount }} in cart</div>
-          <div class="col-2">
-            <button
-              (click)="addToCart(product)"
-              class="btn btn-secondary btn-block"
-            >
-              +
-            </button>
-          </div>
-        </div>
-      </ng-template>
-    </ng-container>
+  <div *ngIf="showActions && shoppingCart" class="card-footer">
+    <button
+      *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity"
+      (click)="addToCart(product)"
+      class="btn btn-secondary btn-block"
+    >
+      Add to cart
+    </button>
+    <ng-template #updateQuantity>
+      <product-quantity
+        [product]="product"
+        [shopping-cart]="shoppingCart"
+      ></product-quantity>
+    </ng-template>
   </div>
 </div>
