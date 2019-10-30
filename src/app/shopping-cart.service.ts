@@ -45,12 +45,17 @@ export class ShoppingCartService {
       .pipe(take(1))
       .subscribe((item: any) => {
         let value = item.payload.val();
-        item$.update({
-          title: product.title,
-          imageUrl: product.imageUrl,
-          price: product.price,
-          quantity: (value ? value.quantity : 0) + change
-        });
+        let quantity = (value ? value.quantity : 0) + change;
+
+        if (quantity === 0) item$.remove();
+        else {
+          item$.update({
+            title: product.title,
+            imageUrl: product.imageUrl,
+            price: product.price,
+            quantity: quantity
+          });
+        }
       });
   }
 
