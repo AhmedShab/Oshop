@@ -1,28 +1,35 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../models/product';
 import { ProductService } from 'src/app/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { ShoppingCart } from '../models/shopping-cart';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit {
   products: Product[] = [];
   category: string;
   filteredProduct: Product[] = [];
-  cart: any;
-  subscription: Subscription;
+  cart$: Observable<ShoppingCart>;
 
   constructor(
     private productService: ProductService,
     private router: ActivatedRoute,
     private cartService: ShoppingCartService
-  ) {
+  ) {}
+
+  async ngOnInit() {
+    this.cart$ = await this.cartService.getCart();
+    this.populateProducts();
+  }
+
+  populateProducts() {
     this.productService
       .getAll()
       .pipe(
@@ -33,20 +40,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
       )
       .subscribe(params => {
         this.category = params.get('category');
-
-        this.filteredProduct = this.category
-          ? this.products.filter(product => this.category === product.category)
-          : this.products;
+        this.applyFilter();
       });
   }
 
-  async ngOnInit() {
-    this.subscription = (await this.cartService.getCart()).subscribe(
-      cart => (this.cart = cart)
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  private applyFilter() {
+    this.filteredProduct = this.category
+      ? this.products.filter(product => this.category === product.category)
+      : this.products;
   }
 }
