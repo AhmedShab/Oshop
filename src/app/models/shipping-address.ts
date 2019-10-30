@@ -1,4 +1,4 @@
-export interface ShippingAddress {
+export interface Shipping {
   name: string;
   addressLine1: string;
   addressLine2: string;

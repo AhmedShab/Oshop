@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ShippingAddress } from '../models/shipping-address';
+import { Shipping } from '../models/shipping-address';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { Observable, Subscription } from 'rxjs';
 import { ShoppingCart } from '../models/shopping-cart';
 import { OrderService } from '../order.service';
 import { AuthService } from '../auth.service';
+import { Order } from '../models/order';
 
 @Component({
   selector: 'app-checkout',
@@ -12,7 +13,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit, OnDestroy {
-  shipping = {} as ShippingAddress;
+  shipping = {} as Shipping;
   cart: ShoppingCart;
   userId: string;
   cart$: Observable<ShoppingCart>;
@@ -39,22 +40,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
   placeOrder() {
-    let order = {
-      userId: this.userId,
-      datePlaced: new Date().getTime(),
-      shipping: this.shipping,
-      items: this.cart.items.map(item => {
-        return {
-          product: {
-            title: item.title,
-            imageUrl: item.imageUrl,
-            price: item.price
-          },
-          quantity: item.quantity,
-          totalPrice: item.totalPrice
-        };
-      })
-    };
+    let order = new Order(this.userId, this.shipping, this.cart);
     this.orderService.storeOrder(order);
   }
 }
