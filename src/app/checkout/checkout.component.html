@@ -1,1 +1,73 @@
-<p>checkout works!</p>
+<div class="row">
+  <div class="col-6">
+    <h1>Shipping</h1>
+    <form #f="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          #name="ngModel"
+          ngModel
+          name="name"
+          class="form-control"
+          type="text"
+          id="name"
+          required
+        />
+        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+          Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="line1">Address</label>
+        <input
+          #line1="ngModel"
+          ngModel
+          name="line1"
+          class="form-control"
+          type="text"
+          id="line1"
+          placeholder="Line 1"
+          required
+        />
+        <div class="alert alert-danger" *ngIf="line1.touched && line1.invalid">
+          Line 1 is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="line2"></label>
+        <input
+          #line2="ngModel"
+          ngModel
+          name="line2"
+          class="form-control"
+          type="text"
+          id="line2"
+          placeholder="Line 2"
+          required
+        />
+        <div class="alert alert-danger" *ngIf="line2.touched && line2.invalid">
+          Line 2 is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input
+          #city="ngModel"
+          ngModel
+          name="city"
+          class="form-control"
+          type="text"
+          id="city"
+          required
+        />
+        <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+          City is required
+        </div>
+      </div>
+      <button class="btn btn-primary">Place Order</button>
+    </form>
+  </div>
+  <div class="col-6">
+    <h3>Order Summary</h3>
+  </div>
+</div>
