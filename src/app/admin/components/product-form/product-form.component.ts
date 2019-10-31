@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from '../../shared/services/category.service';
+import { CategoryService } from '../../../shared/services/category.service';
 import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { Product } from '../../shared/models/product';
+import { Product } from '../../../shared/models/product';
 
 @Component({
   selector: 'app-product-form',

@@ -4,8 +4,8 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 
 @NgModule({
-  imports: [CommonModule],
   declarations: [ProductCardComponent, ProductQuantityComponent],
+  imports: [CommonModule],
   exports: [ProductCardComponent, ProductQuantityComponent]
 })
 export class SharedModule {}
