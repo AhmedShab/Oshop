@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './core/components/home/home.component';
 import { ShoppingCartComponent } from './shopping/components/shopping-cart/shopping-cart.component';
 import { ProductsComponent } from './shopping/components/products/products.component';
 import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
 import { OrderSuccessComponent } from './shopping/components/order-success/order-success.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './core/components/login/login.component';
 import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
 import { MyOrdersComponent } from './shopping/components/my-orders/my-orders.component';
