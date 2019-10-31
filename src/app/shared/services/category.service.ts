@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { snapshotChanges } from './utils/firebase';
+import { snapshotChanges } from '../../utils/firebase';
 
 @Injectable({
   providedIn: 'root'

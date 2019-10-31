@@ -1,5 +1,3 @@
-import { Product } from 'src/app/models/product';
-
 export class ShoppingCartItem {
   title: string;
   imageUrl: string;

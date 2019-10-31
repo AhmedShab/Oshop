@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
-import { Product } from './models/product';
+import { Product } from '../models/product';
 import { Observable } from 'rxjs';
-import { snapshotChanges } from './utils/firebase';
+import { snapshotChanges } from '../../utils/firebase';
 
 @Injectable({
   providedIn: 'root'
