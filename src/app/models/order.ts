@@ -2,7 +2,7 @@ import { Shipping } from './shipping-address';
 import { ShoppingCart } from './shopping-cart';
 
 export class Order {
-  datePlace: number;
+  datePlaced: number;
   items: any[];
 
   constructor(
@@ -10,7 +10,7 @@ export class Order {
     public shipping: Shipping,
     shoppingCart: ShoppingCart
   ) {
-    this.datePlace = new Date().getTime();
+    this.datePlaced = new Date().getTime();
     this.items = shoppingCart.items.map(item => {
       return {
         product: {
