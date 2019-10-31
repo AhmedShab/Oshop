@@ -1,4 +1,4 @@
-<form>
+<form #f="ngForm">
   <div class="form-group">
     <label for="name">Name</label>
     <input
@@ -71,7 +71,7 @@
       City is required
     </div>
   </div>
-  <button (click)="placeOrder()" class="btn btn-primary">
+  <button [disabled]="f.invalid" (click)="placeOrder()" class="btn btn-primary">
     Place Order
   </button>
 </form>
